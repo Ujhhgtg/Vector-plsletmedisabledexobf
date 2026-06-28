@@ -121,6 +121,7 @@ object ConfigCache {
     Log.d(TAG, "Executing Cache Update...")
     val db = dbHelper.readableDatabase
     val oldState = state
+    val isDexObfuscateEnabled = PreferenceStore.isDexObfuscateEnabled()
 
     val newModules = mutableMapOf<String, Module>()
     val obsoleteModules = mutableSetOf<String>()
@@ -180,7 +181,7 @@ object ConfigCache {
               obsoletePaths[pkgName] = realApkPath
             }
 
-            val preLoadedApk = FileSystem.loadModule(apkPath, state.isDexObfuscateEnabled)
+            val preLoadedApk = FileSystem.loadModule(apkPath, isDexObfuscateEnabled)
             if (preLoadedApk != null) {
               val module =
                   Module().apply {
@@ -403,7 +404,7 @@ object ConfigCache {
               uid = module.appId
             }
 
-            FileSystem.loadModule(apkPath, state.isDexObfuscateEnabled)?.let {
+            FileSystem.loadModule(apkPath, PreferenceStore.isDexObfuscateEnabled())?.let {
               module.file = it
               modules.add(module)
               // We intentionally don't mutate state.modules here. Cache update will catch it.

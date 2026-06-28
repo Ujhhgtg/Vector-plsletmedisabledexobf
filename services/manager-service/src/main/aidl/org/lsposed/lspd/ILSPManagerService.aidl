@@ -72,6 +72,10 @@ interface ILSPManagerService {
 
     int getDex2OatWrapperCompatibility() = 44;
 
+    boolean getDexObfuscate() = 42;
+
+    void setDexObfuscate(boolean enable) = 43;
+
     void clearApplicationProfileData(in String packageName) = 45;
 
     boolean enableStatusNotification() = 47;

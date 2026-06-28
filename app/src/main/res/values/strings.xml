@@ -239,4 +239,6 @@
     <string name="color_deep_orange">Deep orange</string>
     <string name="color_brown">Brown</string>
     <string name="color_blue_grey">Blue grey</string>
+    <string name="settings_xposed_api_call_protection">Xposed API call protection</string>
+    <string name="settings_xposed_api_call_protection_summary">Block dynamically loaded module code from using Xposed API, this may break some modules but benefit security</string>
 </resources>

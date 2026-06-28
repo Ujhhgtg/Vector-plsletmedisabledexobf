@@ -174,6 +174,7 @@ object CliHandler {
             when (key) {
               "status-notification" -> ManagerService.enableStatusNotification()
               "verbose-log" -> ManagerService.isVerboseLog
+              "dex-obfuscate" -> ManagerService.dexObfuscate
               else -> throw IllegalArgumentException("Unknown config key: $key")
             }
         mapOf("KEY" to key, "VALUE" to value)
@@ -188,6 +189,7 @@ object CliHandler {
         when (key) {
           "status-notification" -> ManagerService.setEnableStatusNotification(value)
           "verbose-log" -> ManagerService.setVerboseLog(value)
+          "dex-obfuscate" -> ManagerService.dexObfuscate = value
           else -> throw IllegalArgumentException("Unknown config key: $key")
         }
         "Successfully set $key to $value."
